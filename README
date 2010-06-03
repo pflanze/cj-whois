@@ -1,0 +1,32 @@
+cj-whois is a simple perl program around Net::DNS and the whois
+command line tool that tells whether a given argument is a free domain
+or not. It first checks its cache, returning the cached result if
+present, then checks DNS, if there's no entry checks whois, then
+prints 1 if the domain is free, 0 if it isn't. cj-whois --help will
+tell about the options.
+
+USAGE:
+
+Install dependencies on Debian systems:
+
+ apt-get install libyaml-perl libnet-dns-perl 
+
+Run the script:
+
+ /path/to/cj-whois/cj-whois somedomain.com
+
+or, of course, HOME="/path/to/cj-whois/:$HOME" then just run cj-whois
+without the path.
+
+
+If you want to use the 'cj-sync' tool to separate domains manually:
+
+ mkdir ~/cj-whois
+ cd ~/cj-whois
+
+then run cj-sync after you've done some cj-whois runs, then move files
+from ~/cj-whois/new/ to other subdirectories of ~/cj-whois/ to your
+liking. cj-sync will hard link those files from the cj-whois cache to
+~/cj-whois/new/ that determine a free domain and don't exist in any
+subdirectory of ~/cj-whois/ already.
+
