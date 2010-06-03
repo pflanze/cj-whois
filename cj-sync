@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eu
+cd ~/.cj-whois
+grep '^--- free' -r . -l|grep com|perl -wne 's|.*/||;print or die' | while read domain
+do
+  (
+      set -eu
+      cd ~/cj-whois
+      linkit () {
+	  # dynamically scoped right..?. ich mein: not retaining scope. wasmr.
+	  mkdir -p new
+	  ln -v ~/.cj-whois/"$domain" new/
+      }
+      #chris@novo:~/cj-whois$ find \( -name sync1 -a -printf '\c' \) -o false
+      #find: invalid expression
+      #hm. whatever grr.
+      res=$(find -name "$domain")
+      if [ -z "$res" ]; then
+	  linkit
+      fi
+  )
+done
