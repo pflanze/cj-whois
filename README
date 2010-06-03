@@ -30,3 +30,10 @@ liking. cj-sync will hard link those files from the cj-whois cache to
 ~/cj-whois/new/ that determine a free domain and don't exist in any
 subdirectory of ~/cj-whois/ already.
 
+
+NOTE:
+
+cj-whois doesn't check (yet) in the case whether if a domain is taken
+whether the domain is for sale. I'd welcome ideas on how to approach
+that. So you may still want to check taken domains by manual
+inspection...
